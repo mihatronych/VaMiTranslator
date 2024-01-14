@@ -1,3 +1,13 @@
+function deleteTranslate(translateId) {
+  fetch("/delete-translate", {
+    method: "POST",
+    body: JSON.stringify({ translateId: translateId }),
+  }).then((_res) => {
+    window.location.href = "/";
+  });
+}
+
+
 function deleteNote(noteId) {
   fetch("/delete-note", {
     method: "POST",
