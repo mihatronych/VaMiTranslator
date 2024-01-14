@@ -1,20 +1,24 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
 %}
-<h1 align="center">Notes</h1>
+<h1 align="center">Translates</h1>
 <form method="POST">
-  <textarea name="note" id="note" class="form-control"></textarea>
-  <br />
-  <textarea name="note" id="note" class="form-control"></textarea>
+ <select name="model_name" class="Input">
+<!--% for option in options %}-->
+<option value="rnn">RNN</option>
+   <option value="transformer">Transformer</option>
+<!--% endfor %}-->
+</select>
+  <textarea name="translate" id="translate" class="form-control"></textarea>
   <br />
   <div align="center">
-    <button type="submit" class="btn btn-primary">Add Note</button>
+    <button type="submit" class="btn btn-primary">Translate</button>
   </div>
 </form>
-<ul class="list-group list-group-flush" id="notes">
-  {% for note in user.notes %}
+<ul class="list-group list-group-flush" id="translates">
+  {% for translate in user.translates|reverse %}
   <li class="list-group-item">
-    {{ note.data }}
-    <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+    {{ translate.source }}
+    <button type="button" class="close" onClick="deleteTranslate({{ translate.id }})">
       <span aria-hidden="true">&times;</span>
     </button>
   </li>
