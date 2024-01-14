@@ -2,7 +2,8 @@ import pickle
 import tensorflow as tf
 from tensorflow.keras import layers
 from tensorflow import keras
-import os
+from . import transformer_utilities
+
 
 def read_pickle_tv(path):
     from_disk = pickle.load(open(path, "rb"))
