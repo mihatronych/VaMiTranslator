@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from .models import Note, Translate
 from . import db
 import json
+from .utils import rnn
 
 views = Blueprint('views', __name__)
 
@@ -35,10 +36,12 @@ def index():
         if len(source) < 1:
             flash('Note is too short!', category='error')
         else: # ВОТ ЗДЕСЬ БУДЕТ МАГИЯ ТРАНСЛЕЙТА
-            new_translate = Translate(source=source, translate=source, model_name=model_name, user_id=current_user.id)  #providing the schema for the translate
-            db.session.add(new_translate) #adding the note to the database
-            db.session.commit()
-            flash('Translated!', category='success')
+            if model_name == 'rnn':
+                tr_res = rnn.decode_sequence_rnn(source)
+                new_translate = Translate(source=source, translate=tr_res, model_name=model_name, user_id=current_user.id)  #providing the schema for the translate
+                db.session.add(new_translate) #adding the note to the database
+                db.session.commit()
+                flash('Translated!', category='success')
     return render_template("index.html", user=current_user)
 
 @views.route('/delete-note', methods=['POST'])

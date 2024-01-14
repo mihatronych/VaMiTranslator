@@ -1,7 +1,8 @@
 import pickle
 import tensorflow as tf
 from tensorflow.keras import layers
-
+from tensorflow import keras
+import os
 
 def read_pickle_tv(path):
     from_disk = pickle.load(open(path, "rb"))
@@ -10,3 +11,8 @@ def read_pickle_tv(path):
     tv.adapt(tf.data.Dataset.from_tensor_slices(["что"]))
     tv.set_weights(from_disk['weights'])
     return tv
+
+
+def reconstruct_model_from_h5(path):
+    # It can be used to reconstruct the model identically.
+    return keras.models.load_model(path)

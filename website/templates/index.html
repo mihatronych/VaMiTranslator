@@ -17,7 +17,7 @@
 <ul class="list-group list-group-flush" id="translates">
   {% for translate in user.translates|reverse %}
   <li class="list-group-item">
-    {{ translate.source }}
+      {{ translate.source }} - <i>{{ translate.translate }}</i> - <b>{{ translate.model_name }}</b>
     <button type="button" class="close" onClick="deleteTranslate({{ translate.id }})">
       <span aria-hidden="true">&times;</span>
     </button>
