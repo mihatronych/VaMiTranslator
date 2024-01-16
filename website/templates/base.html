@@ -15,9 +15,10 @@
       crossorigin="anonymous"
     />
 
-    <title>{% block title %}Home{% endblock %}</title>
+    <title>{% block title %}Главная{% endblock %}
+    </title>
   </head>
-  <body>
+  <body class="text-center">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <button
         class="navbar-toggler"
@@ -30,11 +31,11 @@
       <div class="collapse navbar-collapse" id="navbar">
         <div class="navbar-nav">
           {% if user.is_authenticated %}
-          <a class="nav-item nav-link" id="home" href="/">Home</a>
-          <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
+          <a class="nav-item nav-link" id="home" href="/">Главная</a>
+          <a class="nav-item nav-link" id="logout" href="/logout">Разлогиниться</a>
           {% else %}
-          <a class="nav-item nav-link" id="login" href="/login">Login</a>
-          <a class="nav-item nav-link" id="signUp" href="/sign-up">Sign Up</a>
+          <a class="nav-item nav-link" id="login" href="/login">Залогиниться</a>
+          <a class="nav-item nav-link" id="signUp" href="/sign-up">Регистрация</a>
           {% endif %}
         </div>
       </div>
@@ -58,8 +59,39 @@
     </div>
     {% endif %} {% endfor %} {% endif %} {% endwith %}
 
+    <div class="container text-center">
+  <div class="row">
+      <div class="col">
+      <div class="card bs-dark" style="width: 18rem;">
+  <img src="https://bigpicture.ru/wp-content/uploads/2019/02/88-4.jpg" class="card-img-top" alt="Chaos never died">
+  <div class="card-body bs-dark">
+    <h5 class="card-title bs-dark" >Песиголовец</h5>
+    <p class="card-text bs-dark">Прииди́те вси́ дне́сь, христоно́сцы, Христофо́ра па́мять, и́стины свиде́теля богому́драго, благоче́стно воспои́м.</p>
+<p>Му́жески подвиза́вся на ле́сть, мучи́телей преще́ния, му́чениче страстоно́сче, кре́постию Христо́вою утвержда́емь, попра́л еси́.</p>
+    <a href="https://bigpicture.ru/muchenik-s-golovoj-sobaki-samyj-zagadochnyj-svyatoj-v-xristianstve/" class="btn btn-primary">Отправиться в скит</a>
+  </div>
+</div>
+    </div>
+      <div class="col">
     <div class="container">{% block content %} {% endblock %}</div>
-    <script
+    </div>
+  </div> </div>
+    <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark center">
+      <div class="collapse navbar-collapse center" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto center">
+          <li class="nav-item active">
+            <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/mihatronych/VaMiTranslator">Центр внимания мерзавцев</a>
+          </li>
+            <li class="nav-item">
+            <a class="nav-link" href="https://colab.research.google.com/drive/1aYAZijLZt3atJYLK_NFKg4ucfTvHITVs?usp=sharing">Гугл сотрудничество</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+          <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
       crossorigin="anonymous"
@@ -74,7 +106,6 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-
 {% block javascript %}
     <script type="text/javascript">
       function deleteNote(noteId) {

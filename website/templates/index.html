@@ -1,18 +1,18 @@
-{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+{% extends "base.html" %} {% block title %}Главная{% endblock %} {% block content
 %}
-<h1 align="center">Translates</h1>
+<h1 align="center">Переводчик русский-украинский</h1>
 <form method="POST">
  <select name="model_name" class="Input">
 <!--% for option in options %}-->
 <option value="rnn">RNN</option>
-   <option value="transformer">Transformer</option>
+   <option value="transformer">Трансформер</option>
      <option value="google_translate">Google Translate</option>
 <!--% endfor %}-->
 </select>
   <textarea name="translate" id="translate" class="form-control"></textarea>
   <br />
   <div align="center">
-    <button type="submit" class="btn btn-primary">Translate</button>
+    <button type="submit" class="btn btn-primary">Перевести</button>
   </div>
 </form>
 <ul class="list-group list-group-flush" id="translates">
